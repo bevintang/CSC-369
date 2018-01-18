@@ -1,13 +1,13 @@
 import java.io.*;
 import java.util.*;
 
-import org.apache.hadoop.io*;
+import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.Mapper.*;
 
 public class SalesMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
     public void map (LongWritable key, Text value, Context context)
-        throws IOException, InterrupedException {
+        throws IOException, InterruptedException {
 
         // Split line of input into tokens
         String stringVal = value.toString().trim();
@@ -19,7 +19,7 @@ public class SalesMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         // Write to context if input is valid
         Text newKey = new Text(tokens[0]);
-        IntWritable newVal = new IntWritable(Integer.parstInt(tokens[0]));
+        IntWritable newVal = new IntWritable(Integer.parseInt(tokens[0]));
         context.write(newKey, newVal);
     }
 }
