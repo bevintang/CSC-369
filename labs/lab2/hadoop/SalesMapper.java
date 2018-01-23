@@ -19,7 +19,7 @@ public class SalesMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         // Write to context if input is valid
         Text newKey = new Text(tokens[0]);
-        IntWritable newVal = new IntWritable(Integer.parseInt(tokens[0]));
+        IntWritable newVal = new IntWritable(Integer.parseInt(tokens[1]));
         context.write(newKey, newVal);
     }
 }
