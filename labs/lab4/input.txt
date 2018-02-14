@@ -1,0 +1,11 @@
+1,iPad,329.99
+15,Nintendo Switch,299.99
+12,X-Box,399.99
+69,Phone Mount,69.99
+1337,GTX 1070 Founder's Edition,479.99
+43,Bose SoundSport Earphones,109.99
+7,Surgical Lube 750mL,14.99
+27,Sounding Starter Kit 6-Piece Set,9.99
+103,X by Ed Sheeran,12.99
+2,A Penny,0.01
+47,Tide Pods Family Pack,17.69
