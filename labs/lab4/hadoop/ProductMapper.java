@@ -28,7 +28,7 @@ public class ProductMapper extends Mapper<LongWritable, Text, NullWritable, Text
 
         // Keep only the top N elements
         if (topN.size() > n) {
-            pollFirst();
+            topN.pollFirst();
         }
     }
 

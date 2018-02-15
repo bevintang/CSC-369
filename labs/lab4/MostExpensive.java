@@ -92,7 +92,7 @@ public class MostExpensive {
         // Print results
         for (int i = 0; i < limit; i++) {
             Product p = products.pollLast();
-            System.out.println(p.getId() + ", " + p.getName() + ", " + p.getPrice());
+            System.out.printf("%4d, %32s, %.2f\n", p.getId(), p.getName(), p.getPrice());
         }
     }
 }

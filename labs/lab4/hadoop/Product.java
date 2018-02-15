@@ -25,8 +25,7 @@ public class Product implements Comparable <Product> {
         return "" + id + "," + name + "," + price;
     }
 
-    public int compareTo(Object o) {
-        Product other = (Product) o;
+    public int compareTo(Product other) {
         int result = compareDouble(price, other.getPrice());
         if (result == 0) {
             result = id - other.getId();
