@@ -40,7 +40,7 @@ public class ProductMapper extends Mapper<LongWritable, Text, NullWritable, Text
     @Override
     protected void cleanup (Context context) throws IOException, InterruptedException {
         for (Product p: topN) {
-            context.write(NullWritable, new Text(p.toString()));
+            context.write(NullWritable.get(), new Text(p.toString()));
         }
     }
 

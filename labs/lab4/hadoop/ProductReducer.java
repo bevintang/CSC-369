@@ -31,8 +31,9 @@ public class ProductReducer extends
         }
 
         // Write the Products in the TreeSet to the disk
-        for (Product p : topN) {
-            context.write(NullWritable.get(), new Text(p.toString()));
+        for (int i = 0; i < n; i++) {
+            Product curP = topN.pollLast();
+            context.write(NullWritable.get(), new Text(curP.toString()));
         }
 
     }

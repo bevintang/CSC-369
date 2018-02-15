@@ -8,7 +8,8 @@ import org.apache.hadoop.mapreduce.lib.input.*;
 import org.apache.hadoop.mapreduce.lib.output.*;
 
 public class ProductDriver extends Configured implements Tool {
-    private static final Logger THE_LOGGER = Logger.getLogger(SalesDriver.class);
+    private static final Logger THE_LOGGER = Logger.getLogger(ProductDriver.class);
+    private static int n = 10;
 
     public int run (String[] args) throws Exception {
         Job job = Job.getInstance();
@@ -30,13 +31,14 @@ public class ProductDriver extends Configured implements Tool {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length != 2){
-            throw new IllegalArgumentException("usage: <input> <output>");
+        if (args.length != 3){
+            throw new IllegalArgumentException("usage: <input> <output> <topN>");
         }
 
+        n = Integer.parseInt(args[2]);
         THE_LOGGER.info("inputDir = " + args[0]);
         THE_LOGGER.info("outputDir = " + args[1]);
-        int returnStatus = ToolRunner.run(new SalesDriver(), args);
+        int returnStatus = ToolRunner.run(new ProductDriver(), args);
         THE_LOGGER.info("returnStatus = " + returnStatus);
 
         System.exit(returnStatus);
