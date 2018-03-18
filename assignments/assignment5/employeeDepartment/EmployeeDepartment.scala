@@ -3,12 +3,14 @@ import org.apache.spark.SparkContext._
 
 object EmployeeDepartment {
     def main(args: Array[String]) {
-        val Employees = Source.fromFile("Employees").getLines.toArray;
-        val Departments = Source.fromFile("Departments").getLines.toArray; 
-        
-        val result = Employees.cartesian(Departments)
-        result.filter(case(Emp, Dep) => Emp.split(",")(1) == Dep.split(",")(0))
-        val printResult = result.map(case(Emp, Dep) => (Emp.split(",")(1), Dep.split(",")(0)))
-        printResult.foreach(x=> println(x(0) + ", " + x(1))) 
+        val emps = Source.fromFile("employees.txt").getLines.toList;
+        val deps = Source.fromFile("departments.txt").getLines.toList; 
+
+        val rddEmps = sc.parallelize(emps)
+        val rddDeps = sc.parallelize(deps)
+        val rddCart = rddEmps.cartesian(rddDeps)
+
+        val matches = rddCart.filter {x => x._1.split(",")(1) == x._2.split(",")(0)}
+        matches.collect.foreach(x => println(x._1.split(",")(0) + ", " + x._2.split(",")(1)))
     }
 }
