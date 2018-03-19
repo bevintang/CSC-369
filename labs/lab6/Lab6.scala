@@ -77,7 +77,8 @@ obj Lab6 {
 		/*
 			Print contents of stateStoreRevMap
 		*/
-		stateStoreRevMap.reduceByKey(_ + _).collect().sortBy(_._1).foreach(store => println(store._1 + ", " + store._2))
+		stateStoreRevMap.reduceByKey(_ + _).collect().sortBy(_._1).foreach(
+			store => println(store._1 + ", " + store._2))
 
 	}
 }
